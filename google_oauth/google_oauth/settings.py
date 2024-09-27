@@ -31,29 +31,32 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'rest_framework',
-    'drf_yasg',  # If you want to document the API using Swagger
+    'drf_yasg', 
     'rest_framework.authtoken',
     'google_auth',
 ]
 
-SITE_ID = 1  # This is required for allauth
+SITE_ID = 1 
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'APP': {
-            'client_id': '204875283942-g3n3bdc2no6lj3koir4vpkei0q02sged.apps.googleusercontent.com',  # Google OAuth client ID
-            'secret': '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',  # Google OAuth client secret
+            'client_id': '204875283942-g3n3bdc2no6lj3koir4vpkei0q02sged.apps.googleusercontent.com',
+            'secret': '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',
             'key': ''
         },
         'SCOPE': [
             'profile',
             'email',
+            'https://www.googleapis.com/auth/calendar',
+            'https://www.googleapis.com/auth/calendar.events',
+
         ],
         'AUTH_PARAMS': {
-            'access_type': 'online',
+            'access_type': 'offline',
         },
-        'OAUTH_PKCE_ENABLED': True,  # Enable PKCE for better security
-        'REDIRECT_URI': 'http://127.0.0.1:8000/auth/social/custom/login/', # Replace with your redirect URL
+        'OAUTH_PKCE_ENABLED': True,
+        'REDIRECT_URI': 'http://127.0.0.1:8000/auth/social/custom/login/',
     }
 }
 AUTHENTICATION_BACKENDS = (
